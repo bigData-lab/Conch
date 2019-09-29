@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.MailSender;
@@ -23,6 +24,9 @@ public class NoticeController {
 
     @Autowired
     NoticeService noticeService;
+
+    @Value("${aaa.bbb.ccc}")
+    private String ccc;
 
     @ApiOperation("钉钉通知API ")
     @PostMapping(value = "/notice/ding")
@@ -42,6 +46,13 @@ public class NoticeController {
             resp = new Response("success", 200, "success");
         }
         return resp;
+    }
+
+    @ApiOperation("testAPI ")
+    @GetMapping(value = "/notice/test")
+    public Response mail() {
+
+        return new Response("sucess", 200, ccc);
     }
 
 

@@ -1,5 +1,6 @@
 package com.dazhenyun.conch;
 
+import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -13,6 +14,7 @@ import java.net.UnknownHostException;
 @Slf4j
 @SpringBootApplication
 @EnableCaching
+@EnableApolloConfig
 public class ConchApp {
 
     public static void main(String[] args) throws UnknownHostException {
