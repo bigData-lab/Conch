@@ -17,8 +17,6 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class NoticeServiceImpl implements NoticeService {
 
-    private static String DINGAPI = "https://oapi.dingtalk.com/robot/send?access_token=";
-
     @Value("${spring.mail.username}")
     private String from;
 
@@ -31,8 +29,9 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public boolean dingNotice(DingDTO dto) {
         String content = dto.getContent();
-        DingTextDTO textDTO = DingTextDTO.builder().content(content).atAll(false).build();
-        String webHook_token = DINGAPI + dto.getAccess_token();
+        DingTextDTO textDTO = DingTextDTO.builder().content(content).atAll(false).mobiles(dto.getMobiles()).build();
+        String DING_API = "https://oapi.dingtalk.com/robot/send?access_token=";
+        String webHook_token = DING_API + dto.getAccess_token();
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<DingTextDTO> resp = restTemplate.postForEntity(webHook_token, textDTO, DingTextDTO.class);
         if (resp.getStatusCode() == HttpStatus.OK) {

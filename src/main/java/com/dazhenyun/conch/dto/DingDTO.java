@@ -16,4 +16,7 @@ public class DingDTO {
 
     @ApiModelProperty(value = "消息内容", required = true)
     private String content;
+
+    @ApiModelProperty(value = "content中需要@人员的手机列表（字符串格式，英文逗号间隔）")
+    private String mobiles;
 }

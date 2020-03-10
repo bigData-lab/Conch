@@ -10,10 +10,11 @@ import java.util.Map;
 
 @Data
 @NoArgsConstructor
-public class DingTextDTO extends DingBaseDTO{
+public class DingTextDTO extends DingBaseDTO {
 
     private Map text;
     private Map at;
+    private String mobiles;
 
     @Builder
     public DingTextDTO(String content, Boolean atAll, String mobiles) {
